@@ -1,0 +1,24 @@
+language: java
+install: mvn clean install -Dmaven.compiler.target=1.7 -Dmaven.compiler.source=1.7
+  -DskipTests=true
+script: mvn test -Dmaven.compiler.target=1.7 -Dmaven.compiler.source=1.7
+addons:
+  apt:
+    packages:
+    - sshpass
+  ssh_known_hosts:
+  - $DEPLOY_HOST
+env:
+  global:
+  - secure: UZXBtKG7vxUVCpZwLg4KCcdEBL/E5JbQKXDSX/gqT1P3sk/n0jaPODLdvwpMMdUpK01vHZ3fQJpKX293EduIHYcKNf6V0/l6nJgyMGXdjDFjVlWOAMQ6HIK3MH6+X8FjvmmEidYItHkae8H/NbK/bR0mHBLbXLN53i2WduSCjRdPFGpA/0WnxIplEKRkCI6Ih5OD1dwRRtAIBmVMwpMue7cRvr1Quwjc+iAhegT7OR6AuDpmUlH9pMiazGuezPNdXUatnRBxRJddOEvWsrCenidOWNaH47CheO8Vld24uJoYQn0fQE8vTDb130oWSsMiAA/RqvigsohyiQTqA0Wq2D7zmTjB+jDyA+Miw1sZHB3eCZaS5kxAZwgaOx+Im/PyviyeMNPeQ45Tx17g1sLlvwBvOaLBzxE9nQWpDjcZIqTUjcAIzj93/kJODWFeOpvjG0g1iKkjYGQDftzI+zTOZkFHqpc/550FtplGLJqzy44f47bzseZh3VTsTHWoSB5FJG5LE6jXsAk8BYXZxe9o6KNB89TWIt3qcyapQzbqkNkLwW9OL+h+XFjbtNiHaheWyFs1yYbPAHZbzFNZKXbT3iB9Q8HdYMUY33aRwc0ysZoJmnRF25k6KL/1L/U1hJooJYIasBDAhqJZ/UxklQFShOXAYexCf4cjxv6PkzBGkBw=
+  - secure: gZktVTsJEayXWIdhartq56VKktaNm4sVAXJAj5AqAM5MSGNMVTYiA9C1Br1yxvOf8xgx8HfvShygHe9ocVzug4XKET/4ZWGimKMVKFKduyiL3H4e06rHIE4Pzy1135m+zTXHSkXggFUwB7IZC6h/vNDsG53ou2hjGKMgJGlkLWOHXJeqLiPFDncJKBX/b7449/m70GYbMMBTP3I3pDfU3QExNSmv2QqY4pBoh38tkckfezbB2ykRqlSh/ODNCDxzarRmBJ4G3jg0tj3hdnl95999dayotFddV7+r8WwqQgucZZPqQNVR3cXYQ3snLDxwddz58r1BRNatSQ4aLL4dHBoryQsvYfRnrUPlTVdgTUuv9InoIltfCMT57BWLXZZriX4C4clMva++8vt/jRtBrfjQk8dITTJY62OFu9rNvbRieJlcXFIEjjpOntmNqZdhGSBgz6CNCq2HP506+YGF7Bn2LYe4jVNsAWYY4egkiMkhuY4zVg0D8VMTt8l+XwySPOrWVsG2LrUSu63wDfLs41Nmrf89JahWRNBsDByXtu1tbVclgaP1xcy0aMfzIB3ihEPw6/f2RPr6M0FsZ+C4mNlsPzhwsVtqOfOOBCSZZDDh9hbBXkXOMY90W1I9opqa4P+dHTpmQ3/FnbHpg07GrlJ9R0s+G4ol0gC+a72/sjo=
+  - secure: qocQw09+Vi2TNEawOVBubugthenMBLxHy0UW8umIknLJp26mAF7OVRmYqTnzKfPETB4Fp0NP63ix6NKr3UCqB33Zx141Si2xTkgbPAPlzUB9EBKsCiRsQdV8wVUt0VkhIYcFpK9eqbkK/laEfo0lwExTHdZSYLO5yG7FiKfIYZTLEPfltRN5HJzuZWQ5PdVINMMg5gkn1JwJ9lGtpLxkS5RuaTzRXiWfJo0U4A6wNWikmGII0AxOuN+SIi7ikH0Okr+A8cy2dWlvQwXiFr+lNxXNPNt8qilWbcGlvpxHl9VqvEseU+uPzoeFfEMkWHYOJFmsZQDFmzj1e7ZkGTP5RmB2dpZctj+XtNtD4ClP2eoQ1AAhOm0FbzUhd7xr/NRzK3WY902CyzU3FI45o4TUXIA+pr2gLY9iiqln3MvOEvUd4FPEaDUTo9PVg+ppMB/zQnup29k0D4Jv661QQRILA4JW/ZlU0H2Gm5MVs0l2GlVAspMyviCYld0M79fUg3ZWVnUtjuKnbjvFcHudrbvgxzB8uZAzYiSbN66xAnEzWKbHnN43nSVNuAC5PRTm6loovtc46561nvqQayroF6G4pwLFnNkXDmw8oVOV+6wj11MdK41Ul25II+ffcUwMyzkQSh/b0n/EPkggkycLoGJMDpe5d/U75uQeow+Qm5CLT9o=
+after_success:
+- chmod 600 ~/.ssh/id_rsa
+- eval "$(ssh-agent)"
+- ssh-add
+- export SSHPASS=$DEPLOY_PASS
+- scp /home/travis/build/movax10/sublator/target/ROOT.war $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+before_install:
+- openssl aes-256-cbc -K $encrypted_5c31a1050f8e_key -iv $encrypted_5c31a1050f8e_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
