@@ -3,9 +3,6 @@ install: mvn clean install -Dmaven.compiler.target=1.7 -Dmaven.compiler.source=1
   -DskipTests=true
 script: mvn test -Dmaven.compiler.target=1.7 -Dmaven.compiler.source=1.7
 addons:
-  apt:
-    packages:
-    - sshpass
   ssh_known_hosts:
   - sublator-movax10.rhcloud.com
   - 52.21.69.223
