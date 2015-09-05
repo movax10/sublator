@@ -7,7 +7,9 @@ addons:
     packages:
     - sshpass
   ssh_known_hosts:
-  - $DEPLOY_HOST
+  - sublator-movax10.rhcloud.com
+  - 52.21.69.223
+
 env:
   global:
   - secure: UZXBtKG7vxUVCpZwLg4KCcdEBL/E5JbQKXDSX/gqT1P3sk/n0jaPODLdvwpMMdUpK01vHZ3fQJpKX293EduIHYcKNf6V0/l6nJgyMGXdjDFjVlWOAMQ6HIK3MH6+X8FjvmmEidYItHkae8H/NbK/bR0mHBLbXLN53i2WduSCjRdPFGpA/0WnxIplEKRkCI6Ih5OD1dwRRtAIBmVMwpMue7cRvr1Quwjc+iAhegT7OR6AuDpmUlH9pMiazGuezPNdXUatnRBxRJddOEvWsrCenidOWNaH47CheO8Vld24uJoYQn0fQE8vTDb130oWSsMiAA/RqvigsohyiQTqA0Wq2D7zmTjB+jDyA+Miw1sZHB3eCZaS5kxAZwgaOx+Im/PyviyeMNPeQ45Tx17g1sLlvwBvOaLBzxE9nQWpDjcZIqTUjcAIzj93/kJODWFeOpvjG0g1iKkjYGQDftzI+zTOZkFHqpc/550FtplGLJqzy44f47bzseZh3VTsTHWoSB5FJG5LE6jXsAk8BYXZxe9o6KNB89TWIt3qcyapQzbqkNkLwW9OL+h+XFjbtNiHaheWyFs1yYbPAHZbzFNZKXbT3iB9Q8HdYMUY33aRwc0ysZoJmnRF25k6KL/1L/U1hJooJYIasBDAhqJZ/UxklQFShOXAYexCf4cjxv6PkzBGkBw=
