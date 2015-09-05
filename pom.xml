@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>1.7</java-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<jackson.version>1.9.13</jackson.version>
 		<hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
@@ -239,6 +239,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<warName>ROOT</warName>
 				</configuration>
 			</plugin>
 		</plugins>
