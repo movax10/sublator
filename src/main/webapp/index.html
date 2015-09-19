@@ -1,51 +1,76 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-<head lang="en">
-    <meta charset="UTF-8">
+<html lang="en" ng-app="SublatorApp">
+<head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sublator</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css">
     <link rel="stylesheet" href="webjars/bootstrap-material-design/0.2.1/css/material.css">
-    <title></title>
 </head>
-<body ng-controller="UsersController">
-
-<div class="row">
-    <br>
-    <div class="container">
-        <div id="userList" class="col-sm-offset-1 col-sm-10">
-            <div class="input-group">
-                <input class="form-control" id="search" name="search" placeholder="Search for" ng-model="query"
-                       required="required"/>
-              <span class="input-group-btn">
-                  <button type="submit" class="btn btn-default">
-                      <i class="glyphicon glyphicon-search"></i>
-                  </button>
-              </span>
-            </div>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <div ng-repeat="user in users | filter:query" class="list-group-item" style="margin-top:16px">
-                        <div class="row-picture">
-                            <img class="circle"
-                                 src="http://i.forbesimg.com/media/lists/people/{{user.firstName | lowercase}}-{{user.familyName | lowercase}}_50x50.jpg"
-                                 alt="icon">
-                        </div>
-                        <div class="row-content">
-                            <h4 class="list-group-item-heading">{{user.firstName}} {{user.familyName}}</h4>
-
-                            <p class="list-group-item-text"><i class="glyphicon glyphicon-envelope"></i> {{user.email}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+	<!-- Блок навигации -->
+	<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      	<a class="navbar-brand" href="#">Sublator</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li class="hide">
+	         	<p class="navbar-text "> <span class="glyphicon glyphicon-user"></span>Logged in</p></li>
+		      <li><a href="#">Log in</a></li>
+		      <li><a href="#">Sign up</a></li>
+		      <li class="hide"><a href="#">Sign out</a></li>
+	      </ul>
+      </div>
     </div>
-</div>
+  </nav> <!-- Х Блок навигации -->
+  <div class="container">
+  	<div class="row">
+  		<!-- Вибор файла -->
+  		<div class="col-sm-4  col-sm-offset-4">
+
+  			<button type="button" class="btn btn-info btn-block">Choose subtitles file</button>
+        <div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;">lolkamovie.srt</div>
+        
+        
+
+  			<button type="button" class="btn btn-info center-block">SUBLATE</button>
+  			
+  		</div><!-- Х Вибор файла -->
+  	</div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <!-- Список слов -->
+        <table ng-controller="WordslistController" class="table table-striped table-bordered" style="margin-top: 4px;">
+          <thead>
+            <tr>
+              <th ng-repeat="field in fields" ng-click="sort(field)" class="col-sm-6" style="cursor: pointer;-webkit-user-select: none;">
+                <span ng-show="sort.field == field && !sort.order" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sort.field == field && sort.order" class="glyphicon glyphicon-chevron-up"></span>
+                {{field}}
+                
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="word in words2 | orderBy: sort.field : sort.order">
+              <td ng-repeat="field in fields">{{word[field]}}</td>
+            </tr>
+            
+          </tbody>
+        </table> <!-- Х Список слов -->
+      </div>
+    </div>
+  </div>
 <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.js"></script>
 <script type="text/javascript" src="webjars/angularjs/1.3.8/angular.min.js"></script>
 <script type="text/javascript" src="webjars/angularjs/1.3.8/angular-resource.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap-material-design/0.2.1/js/material.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>
+  
 
+	
 </body>
 </html>
