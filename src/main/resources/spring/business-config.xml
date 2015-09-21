@@ -13,5 +13,5 @@
 
 	<!-- - POJOs labeled with the @Service annotations are auto-detected. -->
 	<context:component-scan base-package="io.github.movax10.service"/>
-
+    <bean id="mapper" class="org.dozer.DozerBeanMapper"/>
 </beans>

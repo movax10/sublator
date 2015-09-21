@@ -24,8 +24,8 @@ public class SublateController {
     private ISublateService sublateService;
 
 	
-    @RequestMapping(value = "/sublate", method = RequestMethod.GET)
-    public @ResponseBody List<TranslationDto> usersList() {
+    @RequestMapping(value = "/translation", method = RequestMethod.GET)
+    public @ResponseBody List<TranslationDto> translationList() {
 
         return sublateService.getTranslations();
     }
