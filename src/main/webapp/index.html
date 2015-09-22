@@ -31,12 +31,16 @@
   		<!-- Upload file -->
   		<div class="col-sm-4  col-sm-offset-4">
 
-  		<input type="file" class="btn btn-info btn-block">Choose subtitles file</input>
-        <div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;">lolkamovie.srt</div>
+  		<!--<input type="file" class="btn btn-info btn-block">Choose subtitles file</input>-->
+  		<form method="post" action="/upload" enctype="multipart/form-data" name="uploadForm">
+		<input type="file" id="upload" name="file" style="visibility: hidden; width: 1px; height: 1px" multiple file/>
+		<a href="" onclick="document.getElementById('upload').click(); return false" class="btn btn-info btn-block">Choose subtitles file</a>	
+		</form>
+  		<div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;">lolkamovie.srt</div>
         
         
-
-  			<button type="button" class="btn btn-info center-block">SUBLATE</button>
+			
+  			<button type="button" class="btn btn-info btn-block">SUBLATE</button>
   			
   		</div><!-- Х Upload file -->
   	</div>
