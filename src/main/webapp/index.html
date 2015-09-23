@@ -1,49 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="SublatorApp">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Sublator</title>
-    <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css">
-    <link rel="stylesheet" href="webjars/bootstrap-material-design/0.2.1/css/material.css">
+  <title>Sublator</title>
+  <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css">
+  <link rel="stylesheet" href="webjars/bootstrap-material-design/0.2.1/css/material.css">
 </head>
 <body>
-	<!-- Navbar -->
-	<nav class="navbar navbar-default navbar-static-top">
+  <!-- Navbar -->
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
-      	<a class="navbar-brand" href="#">Sublator</a>
+        <a class="navbar-brand" href="#">Sublator</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
-	      <ul class="nav navbar-nav navbar-right">
-	        <li class="hide">
-	         	<p class="navbar-text "> <span class="glyphicon glyphicon-user"></span>Logged in</p></li>
-		      <li><a href="#">Log in</a></li>
-		      <li><a href="#">Sign up</a></li>
-		      <li class="hide"><a href="#">Sign out</a></li>
-	      </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hide">
+            <p class="navbar-text "> <span class="glyphicon glyphicon-user"></span>Logged in</p></li>
+          <li><a href="#">Log in</a></li>
+          <li><a href="#">Sign up</a></li>
+          <li class="hide"><a href="#">Sign out</a></li>
+        </ul>
       </div>
     </div>
   </nav> <!-- Х Navbar -->
   <div class="container">
-  	<div class="row">
-  		<!-- Upload file -->
-  		<div class="col-sm-4  col-sm-offset-4">
-
-  		<!--<input type="file" class="btn btn-info btn-block">Choose subtitles file</input>-->
-  		<form method="post" action="/upload" enctype="multipart/form-data" name="uploadForm">
-		<input type="file" id="upload" name="file" style="visibility: hidden; width: 1px; height: 1px" multiple file/>
-		<a href="" onclick="document.getElementById('upload').click(); return false" class="btn btn-info btn-block">Choose subtitles file</a>	
-		</form>
-  		<div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;">lolkamovie.srt</div>
-        
-        
-			
-  			<button type="button" class="btn btn-info btn-block">SUBLATE</button>
-  			
-  		</div><!-- Х Upload file -->
-  	</div>
+    <div class="row">
+      <!-- Upload file -->
+      <div class="col-sm-4  col-sm-offset-4">
+        <form method="post" action="/upload" enctype="multipart/form-data" name="uploadForm">
+          <input type="file" id="upload" name="file" style="visibility: hidden; width: 1px; height: 1px" file/>
+          <a href="" onclick="document.getElementById('upload').click(); return false" class="btn btn-info btn-block">Choose subtitles file</a> 
+        </form>
+        <div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;">lolkamovie.srt</div>
+        <button type="button" class="btn btn-info btn-block">SUBLATE</button>
+      </div><!-- Х Upload file -->
+    </div>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <!-- Words list -->
@@ -68,13 +62,10 @@
       </div>
     </div>
   </div>
-<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.js"></script>
-<script type="text/javascript" src="webjars/angularjs/1.3.8/angular.min.js"></script>
-<script type="text/javascript" src="webjars/angularjs/1.3.8/angular-resource.min.js"></script>
-<script type="text/javascript" src="webjars/bootstrap-material-design/0.2.1/js/material.js"></script>
-<script type="text/javascript" src="resources/js/app.js"></script>
-  
-
-	
+  <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.js"></script>
+  <script type="text/javascript" src="webjars/angularjs/1.3.8/angular.min.js"></script>
+  <script type="text/javascript" src="webjars/angularjs/1.3.8/angular-resource.min.js"></script>
+  <script type="text/javascript" src="webjars/bootstrap-material-design/0.2.1/js/material.js"></script>
+  <script type="text/javascript" src="resources/js/app.js"></script>
 </body>
 </html>
