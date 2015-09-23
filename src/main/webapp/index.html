@@ -34,14 +34,14 @@
           <input type="file" id="upload" name="file" style="visibility: hidden; width: 1px; height: 1px" file/>
           <a href="" onclick="document.getElementById('upload').click(); return false" class="btn btn-info btn-block">Choose subtitles file</a> 
         </form>
-        <div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;">lolkamovie.srt</div>
-        <button type="button" class="btn btn-info btn-block">SUBLATE</button>
+        <div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;" ng-show="file.name!=undefind" ng-bind="file.name"></div>
+        <button type="button" class="btn btn-info btn-block" ng-show="file.name!=undefind">SUBLATE</button>
       </div><!-- Х Upload file -->
     </div>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <!-- Words list -->
-        <table ng-controller="TranslationController" class="table table-striped table-bordered" style="margin-top: 4px;">
+        <table ng-controller="TranslationController" class="table table-striped table-bordered" style="margin-top: 4px;" ng-show="2>3">
           <thead>
             <tr>
               <th ng-repeat="field in fields" ng-click="sort(field)" class="col-sm-6" style="cursor: pointer;-webkit-user-select: none;">
