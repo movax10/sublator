@@ -5,24 +5,52 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sublator</title>
+  <script type="text/javascript" src="webjars/angularjs/1.3.8/angular.min.js"></script>
   <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css">
   <link rel="stylesheet" href="webjars/bootstrap-material-design/0.2.1/css/material.css">
+  <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Sublator</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="hide">
-            <p class="navbar-text "> <span class="glyphicon glyphicon-user"></span>Logged in</p></li>
-          <li><a href="#">Log in</a></li>
-          <li><a href="#">Sign up</a></li>
-          <li class="hide"><a href="#">Sign out</a></li>
-        </ul>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="navbar-header">
+            <p id="brand" class="navbar-brand">Sublator</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="sub_lang">
+                <label for="subtitles_lang">Subtitles</label>
+                <select name="" id="subtitles_lang">
+                  <option value="en">En</option>
+                  <option value="ru">Ru</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="pull-right sub_lang">
+                <label for="subtitles_translate">Translation</label>
+                <select name="" id="subtitles_translate">
+                  <option value="ru">Ru</option>
+                  <option value="en">En</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="hide">
+              <p class="navbar-text "> <span class="glyphicon glyphicon-user"></span>Logged in</p></li>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#">Sign up</a></li>
+            <li class="hide"><a href="#">Sign out</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav> <!-- Х Navbar -->
@@ -31,20 +59,20 @@
       <!-- Upload file -->
       <div class="col-sm-4  col-sm-offset-4">
         <form method="post" action="/upload" enctype="multipart/form-data" name="uploadForm">
-          <input type="file" id="upload" name="file" style="visibility: hidden; width: 1px; height: 1px" file/>
+          <input type="file" id="upload" name="file" file/>
           <a href="" onclick="document.getElementById('upload').click(); return false" class="btn btn-info btn-block">Choose subtitles file</a> 
         </form>
-        <div class="well well-sm text-center" style="margin-bottom:2px;margin-top:2px;" ng-show="file.name!=undefind" ng-bind="file.name"></div>
+        <div class="well well-sm text-center" id="filename_inf" ng-show="file.name!=undefind" ng-bind="file.name"></div>
         <button type="button" class="btn btn-info btn-block" ng-show="file.name!=undefind">SUBLATE</button>
       </div><!-- Х Upload file -->
     </div>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <!-- Words list -->
-        <table ng-controller="TranslationController" class="table table-striped table-bordered" style="margin-top: 4px;" ng-show="2>3">
+        <table ng-controller="TranslationController" class="table table-striped table-bordered" id="translate-table" ng-show="2>3">
           <thead>
             <tr>
-              <th ng-repeat="field in fields" ng-click="sort(field)" class="col-sm-6" style="cursor: pointer;-webkit-user-select: none;">
+              <th ng-repeat="field in fields" ng-click="sort(field)" class="col-sm-6" ng-cloak>
                 <span ng-show="sort.field == field && !sort.order" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sort.field == field && sort.order" class="glyphicon glyphicon-chevron-up"></span>
                 {{field}}
@@ -54,7 +82,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="word in words | orderBy: sort.field : sort.order">
-              <td ng-repeat="field in fields">{{word[field]}}</td>
+              <td ng-repeat="field in fields" ng-bind="word[field]"></td>
             </tr>
             
           </tbody>
@@ -63,9 +91,12 @@
     </div>
   </div>
   <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.js"></script>
-  <script type="text/javascript" src="webjars/angularjs/1.3.8/angular.min.js"></script>
+  
   <script type="text/javascript" src="webjars/angularjs/1.3.8/angular-resource.min.js"></script>
   <script type="text/javascript" src="webjars/bootstrap-material-design/0.2.1/js/material.js"></script>
+  <script type="text/javascript" src="resources/js/services/translation_service.js"></script>
+  <script type="text/javascript" src="resources/js/controllers/controllers.js"></script>
+  <script type="text/javascript" src="resources/js/directives/directives.js"></script>
   <script type="text/javascript" src="resources/js/app.js"></script>
 </body>
 </html>
