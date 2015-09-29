@@ -63,6 +63,9 @@
           <a href="" onclick="document.getElementById('upload').click(); return false" class="btn btn-info btn-block">Choose subtitles file</a> 
         </form>
         <div class="well well-sm text-center" id="filename_inf" ng-show="file.name!=undefind" ng-bind="file.name"></div>
+        <div class="alert alert-danger text-center" role="alert" ng-show="file.fileErr!=undefind">
+          {{file.fileErr}}
+        </div>
         <button type="button" class="btn btn-info btn-block" ng-show="file.name!=undefind">SUBLATE</button>
       </div><!-- Х Upload file -->
     </div>

@@ -6,12 +6,21 @@ angular.module('app.directives',[])
         file: '@'
       },
       link: function(scope, el, attrs){
+
         el.bind('change', function(event){
-          var files = event.target.files;
-          var file = files[0];
-          scope.file = file;
-          scope.$parent.file = file;
-          scope.$apply();
+          if (event.target.files[0].name.slice(-3)=='srt') {
+            var files = event.target.files;
+            var file = files[0];
+            scope.file = file;
+            scope.$parent.file = file;
+            scope.$apply();
+          }
+          else {
+            file = {fileErr: "ERROR: file extension must be *.srt"};
+            scope.file = file;
+            scope.$parent.file = file;
+            scope.$apply();
+          }
         });
       }
     };
