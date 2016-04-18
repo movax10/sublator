@@ -9,7 +9,6 @@ import io.github.movax10.service.dto.TranslationDto;
 @Service
 public class SublateService implements ISublateService{
 
-	@Override
 	public List<TranslationDto> getTranslations() {
 		List<TranslationDto> translationList = new ArrayList<TranslationDto>();
 		TranslationDto translation1 = new TranslationDto();
